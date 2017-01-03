@@ -1,0 +1,37 @@
+<configuration>
+	<timestamp key="startTime" datePattern="yyyyMMdd'T'HHmmss" />
+	<appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<discriminator
+			class="ch.qos.logback.classic.sift.JNDIBasedContextDiscriminator">
+			<defaultValue>unknown</defaultValue>
+		</discriminator>
+		<sift>
+			<appender name="FILE-${LOG_FILE}"
+				class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<file>${V_LOG_DIR}/${LOG_FILE}.log</file>
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+					<!-- daily rollover -->
+					<fileNamePattern>${V_LOG_ARCHIVE_DIR}/${LOG_FILE}/${LOG_FILE}.%d{yyyy-MM-dd}.log
+					</fileNamePattern>
+
+					<!-- keep 45 days' worth of history -->
+					<maxHistory>45</maxHistory>
+				</rollingPolicy>
+				<encoder>
+					<charset>UTF-8</charset>
+					<pattern>%-4relative [%d] %X{identity} [%thread] %-5level
+						%logger{35} - %msg%n</pattern>
+				</encoder>
+			</appender>
+		</sift>
+	</appender>
+
+	<logger name="gr.hd360" level="DEBUG" />
+
+	<!-- quieten warnings about legitimate bean-overriding - see DEV-4244 -->
+	<logger name="org.springframework.beans.factory.support.DefaultListableBeanFactory" level="ERROR" />
+
+	<root level="INFO">
+		<appender-ref ref="SIFT" />
+	</root>
+</configuration>
