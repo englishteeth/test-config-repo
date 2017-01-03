@@ -3,3 +3,9 @@ server:
 
 logging:
   file: ${V_LOG_DIR}/${spring.application.name}.log
+  pattern:
+    file: "%-4relative [%d] %X{identity} [%thread] %-5level %logger{35} - %msg%n"
+  level:
+    root: INFO
+    gr.hd360: DEBUG
+    org.springframework.beans.factory.support.DefaultListableBeanFactory: ERROR
