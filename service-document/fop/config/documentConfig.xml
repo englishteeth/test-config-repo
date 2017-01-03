@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<documents>
+	<document id="trailerCertificate">
+		<xsl>trailerCertificate.xsl</xsl>
+		<xml>trailerCertificate.xml</xml>
+		<model>
+			<param>policyNumber</param>
+			<param>vehicleRegistration</param>
+			<param>startDate</param>
+			<param>endDate</param>
+			<param>make</param>
+			<param>model</param>
+			<param>ownerName</param>
+			<param>issueDate</param>
+		</model>
+	</document>
+</documents>
