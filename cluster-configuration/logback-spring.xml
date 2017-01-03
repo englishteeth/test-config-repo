@@ -11,16 +11,14 @@
 				<file>${V_LOG_DIR}/${LOG_FILE}.log</file>
 				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 					<!-- daily rollover -->
-					<fileNamePattern>${V_LOG_ARCHIVE_DIR}/${LOG_FILE}/${LOG_FILE}.%d{yyyy-MM-dd}.log
-					</fileNamePattern>
+					<fileNamePattern>${V_LOG_ARCHIVE_DIR}/${LOG_FILE}/${LOG_FILE}.%d{yyyy-MM-dd}.log</fileNamePattern>
 
 					<!-- keep 45 days' worth of history -->
 					<maxHistory>45</maxHistory>
 				</rollingPolicy>
 				<encoder>
 					<charset>UTF-8</charset>
-					<pattern>%-4relative [%d] %X{identity} [%thread] %-5level
-						%logger{35} - %msg%n</pattern>
+					<pattern>%-4relative [%d] %X{identity} [%thread] %-5level %logger{35} - %msg%n</pattern>
 				</encoder>
 			</appender>
 		</sift>
